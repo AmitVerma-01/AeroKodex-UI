@@ -124,6 +124,32 @@ export interface PaginatedResponse<T> {
   results: T[];
 }
 
+export interface ProjectImage {
+  id: number;
+  image: string;
+  caption: string;
+  order: number;
+}
+
+export interface Project {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  category_display: string;
+  client_name: string;
+  industry: string;
+  description: string;
+  challenges?: string;
+  solutions?: string;
+  technologies_used: string[];
+  featured_image: string | null;
+  images?: ProjectImage[];
+  completed_date: string | null;
+  meta_title?: string;
+  meta_description?: string;
+}
+
 export interface Workshop {
   id: number;
   title: string;
@@ -252,6 +278,24 @@ export const productsApi = {
 
   getDetail: (slug: string) =>
     apiFetch<Product>(`/products/${slug}/`, { auth: true }),
+};
+
+// ---- PROJECTS -------------------------------------------------------------
+
+export const projectsApi = {
+  getList: (params?: { category?: string; industry?: string; search?: string; page?: number }) => {
+    const qs = new URLSearchParams();
+    if (params?.category) qs.set('category', params.category);
+    if (params?.industry) qs.set('industry', params.industry);
+    if (params?.search) qs.set('search', params.search);
+    if (params?.page) qs.set('page', String(params.page));
+    return apiFetch<PaginatedResponse<Project>>(
+      `/projects/${qs.toString() ? `?${qs}` : ''}`
+    );
+  },
+
+  getDetail: (slug: string) =>
+    apiFetch<Project>(`/projects/${slug}/`),
 };
 
 // ---- WORKSHOPS ------------------------------------------------------------
