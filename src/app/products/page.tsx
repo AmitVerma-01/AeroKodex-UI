@@ -39,7 +39,7 @@ const ProductsPage = () => {
   return (
     <div className="bg-background min-h-screen">
       {/* Dynamic Header */}
-      <section className="relative py-32 overflow-hidden bg-slate-900">
+      <section className="relative py-32 pt-40 overflow-hidden bg-slate-900 dark:bg-slate-950">
         <div className="absolute inset-0 mesh-grid opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="inline-block px-3 py-1 bg-accent/20 border border-accent/30 text-accent rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
@@ -56,9 +56,9 @@ const ProductsPage = () => {
       {/* Grid Section */}
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
-          <div className="flex bg-slate-100 p-1.5 rounded-sm border border-border">
+          <div className="flex bg-muted p-1.5 rounded-sm border border-border">
             {['All Items', 'Materials', 'Fabrication', 'Aerodynamics'].map((cat) => (
-              <button key={cat} className={`px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded-sm transition-smooth ${cat === 'All Items' ? 'bg-white shadow-sm text-primary' : 'text-secondary hover:text-primary'}`}>
+              <button key={cat} className={`px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded-sm transition-smooth ${cat === 'All Items' ? 'bg-card shadow-sm text-primary' : 'text-secondary hover:text-primary'}`}>
                 {cat}
               </button>
             ))}
@@ -76,18 +76,18 @@ const ProductsPage = () => {
               href={`/products/${product.slug}`}
               className="group block bg-surface border border-border rounded-sm overflow-hidden hover-lift shadow-sm hover:shadow-2xl hover:shadow-primary/10"
             >
-              <div className="aspect-[16/10] overflow-hidden bg-slate-100 relative">
+              <div className="aspect-[16/10] overflow-hidden bg-muted relative">
                 <img 
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover transition-smooth group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary border border-primary/20 shadow-sm">
+                <div className="absolute top-4 left-4 bg-card/95 backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary border border-primary/20 shadow-sm rounded-sm">
                   {product.category}
                 </div>
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">{product.name}</h3>
+                <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors leading-tight">{product.name}</h3>
                 <p className="text-sm text-secondary mb-8 leading-relaxed">{product.tagline}</p>
                 <div className="flex justify-between items-center pt-6 border-t border-border">
                   <span className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">View Engineering Data</span>
@@ -104,12 +104,12 @@ const ProductsPage = () => {
       </section>
 
       {/* Quality Badge Section */}
-      <section className="py-24 border-t border-border bg-slate-50 relative overflow-hidden">
+      <section className="py-24 border-t border-border bg-muted relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center">
            <div className="w-20 h-20 border-2 border-primary/10 rounded-full flex items-center justify-center mx-auto mb-8">
              <span className="text-xs font-black text-primary/30 uppercase tracking-[0.2em]">ISO</span>
            </div>
-           <h3 className="text-xl font-bold mb-4">Quality Management Systems</h3>
+           <h3 className="text-xl font-bold mb-4 text-foreground">Quality Management Systems</h3>
            <p className="text-sm text-secondary leading-relaxed">
              Every material within our inventory is cataloged with full batch traceability and tested 
              against ASTM standards for structural composite integrity.

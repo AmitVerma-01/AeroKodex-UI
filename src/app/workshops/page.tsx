@@ -30,14 +30,14 @@ const WorkshopsPage = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       {/* Header */}
-      <section className="bg-slate-900 py-24 text-white">
+      <section className="bg-slate-900 dark:bg-slate-950 py-24 pt-32 text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <span className="text-blue-400 font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Education & Training</span>
-          <h1 className="text-5xl font-extrabold mb-6">Specialized Aerospace Workshops</h1>
+          <span className="text-accent font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Education & Training</span>
+          <h1 className="text-5xl font-extrabold mb-6 text-white">Specialized Aerospace Workshops</h1>
           <p className="text-slate-400 max-w-2xl text-lg leading-relaxed">
-            Elevate your expertise with industry-leading technical training. Our workshops combine theoretical depth 
+            Elevate your expertise with industry-leading technical training. Our workshops combine theoretical depth
             with hands-on fabrication experience.
           </p>
         </div>
@@ -47,7 +47,7 @@ const WorkshopsPage = () => {
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {workshops.map((workshop) => (
-            <div key={workshop.id} className="bg-white group rounded-sm border border-border overflow-hidden hover-lift shadow-sm">
+            <div key={workshop.id} className="bg-card group rounded-sm border border-border overflow-hidden hover-lift shadow-sm">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img src={workshop.image} alt={workshop.title} className="w-full h-full object-cover transition-smooth group-hover:scale-105" />
                 <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-sm uppercase tracking-widest shadow-lg">
@@ -56,12 +56,12 @@ const WorkshopsPage = () => {
               </div>
               <div className="p-8">
                 <div className="flex items-center space-x-2 mb-4">
-                   <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${workshop.difficulty === 'Advanced' ? 'text-red-600 border-red-200 bg-red-50' : 'text-blue-600 border-blue-200 bg-blue-50'}`}>
+                   <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${workshop.difficulty === 'Advanced' ? 'text-red-500 border-red-500/20 bg-red-500/10' : 'text-accent border-accent/20 bg-accent/10'}`}>
                     {workshop.difficulty}
                    </span>
                    <span className="text-xs text-secondary">{workshop.date}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">{workshop.title}</h3>
+                <h3 className="text-xl font-bold mb-4 text-foreground">{workshop.title}</h3>
                 <p className="text-sm text-secondary mb-8 leading-relaxed">
                   Join our intensive certification course focused on industry standards and advanced methodologies.
                 </p>
@@ -72,7 +72,7 @@ const WorkshopsPage = () => {
                    </svg>
                    {workshop.location}
                 </div>
-                <button className="w-full py-4 bg-slate-50 hover:bg-primary hover:text-white border border-border font-bold text-sm transition-smooth uppercase tracking-widest">
+                <button className="w-full py-4 bg-muted hover:bg-primary hover:text-white border border-border text-foreground font-bold text-sm transition-smooth uppercase tracking-widest">
                   Learn More
                 </button>
               </div>
@@ -82,11 +82,11 @@ const WorkshopsPage = () => {
       </section>
 
       {/* Custom Training CTA */}
-      <section className="py-24 bg-slate-50 border-t border-border">
+      <section className="py-24 bg-muted border-t border-border">
         <div className="max-w-4xl mx-auto px-6 text-center">
-           <h2 className="text-3xl font-bold mb-6">In-House Training Solutions</h2>
+           <h2 className="text-3xl font-bold mb-6 text-foreground">In-House Training Solutions</h2>
            <p className="text-secondary mb-10 text-lg">
-             We provide customized training programs for corporate teams and academic institutions. 
+             We provide customized training programs for corporate teams and academic institutions.
              Programs can be tailored to specific aerospace fabrication needs.
            </p>
            <button className="px-8 py-4 border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-smooth uppercase tracking-widest text-sm">
