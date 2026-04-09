@@ -24,7 +24,7 @@ const ThemeToggle = ({ isScrolled = true }: { isScrolled?: boolean }) => {
       {/* Sun Icon */}
       <svg
         className={`w-[18px] h-[18px] absolute transition-all duration-300 ${
-          isScrolled ? '' : 'text-white'
+          isScrolled ? '' : ''
         } ${
           !mounted
             ? 'opacity-100 rotate-0 scale-100'

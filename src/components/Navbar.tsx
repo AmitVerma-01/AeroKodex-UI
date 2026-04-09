@@ -2,9 +2,11 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useTheme } from './ThemeProvider';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
+  const { theme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
@@ -22,15 +24,16 @@ const Navbar = () => {
     { name: 'About', href: '/about' },
   ];
 
-  // Text color logic: transparent state = white (over hero), scrolled = themed
-  const linkColor = isScrolled ? 'text-secondary hover:text-primary' : 'text-white/80 hover:text-white';
-  const logoTextColor = isScrolled ? 'text-foreground' : 'text-white';
-  const logoSubColor = isScrolled ? 'text-secondary' : 'text-white/60';
+  const showSurfaceNav = isScrolled || theme === 'light';
+
+  const linkColor = showSurfaceNav ? 'text-foreground hover:text-primary' : 'text-white/80 hover:text-white';
+  const logoTextColor = showSurfaceNav ? 'text-foreground' : 'text-white';
+  const logoSubColor = showSurfaceNav ? 'text-secondary' : 'text-white/60';
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-smooth ${
-        isScrolled
+        showSurfaceNav
           ? 'glass-effect shadow-sm py-3'
           : 'bg-transparent py-5'
       }`}
@@ -62,7 +65,7 @@ const Navbar = () => {
           <Link
             href="/contact"
             className={`px-5 py-2 rounded-sm border font-semibold uppercase tracking-wider text-sm transition-smooth ${
-              isScrolled
+              showSurfaceNav
                 ? 'border-primary text-primary hover:bg-primary hover:text-white'
                 : 'border-white/40 text-white hover:bg-white hover:text-slate-900'
             }`}
@@ -74,7 +77,7 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center space-x-3">
           <ThemeToggle isScrolled={isScrolled} />
-          <button onClick={() => setIsMobileOpen(!isMobileOpen)} className={`transition-smooth ${isScrolled ? 'text-foreground' : 'text-white'}`}>
+          <button onClick={() => setIsMobileOpen(!isMobileOpen)} className={`transition-smooth ${showSurfaceNav ? 'text-foreground' : 'text-white'}`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               {isMobileOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -88,7 +91,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileOpen && (
-        <div className="md:hidden bg-surface border-t border-border animate-fade-in">
+        <div className="md:hidden glass-effect bg-surface/85 border-t border-border backdrop-blur-xl animate-fade-in">
           <div className="max-w-7xl mx-auto px-6 py-6 space-y-4">
             {navLinks.map((link) => (
               <Link

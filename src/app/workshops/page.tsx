@@ -32,11 +32,11 @@ const WorkshopsPage = () => {
   return (
     <div className="bg-background min-h-screen">
       {/* Header */}
-      <section className="bg-slate-900 dark:bg-slate-950 py-24 pt-32 text-white">
+      <section className="bg-surface dark:bg-slate-950 py-24 pt-32">
         <div className="max-w-7xl mx-auto px-6">
           <span className="text-accent font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Education & Training</span>
-          <h1 className="text-5xl font-extrabold mb-6 text-white">Specialized Aerospace Workshops</h1>
-          <p className="text-slate-400 max-w-2xl text-lg leading-relaxed">
+          <h1 className="text-5xl font-extrabold mb-6 text-foreground">Specialized Aerospace Workshops</h1>
+          <p className="text-secondary max-w-2xl text-lg leading-relaxed">
             Elevate your expertise with industry-leading technical training. Our workshops combine theoretical depth
             with hands-on fabrication experience.
           </p>

@@ -1,24 +1,38 @@
+'use client';
+
+import { useState } from 'react';
+
 const ProjectsPage = () => {
-  const projects = [
-    {
-      title: "Solar-Powered UAV Structures",
-      industry: "Defense & Research",
-      year: "2025",
-      image: "https://images.unsplash.com/photo-1506947411487-a56738267384?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      title: "Satellite Chassis Fabrication",
-      industry: "Space Sector",
-      year: "2024",
-      image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2072&auto=format&fit=crop"
-    },
-    {
-      title: "High-Speed Wind Tunnel Models",
-      industry: "Aerodynamics",
-      year: "2024",
-      image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop"
-    }
-  ];
+   const [selectedCategory, setSelectedCategory] = useState('All Work');
+   const categories = ['All Work', 'Aerospace', 'Defense'];
+
+   const projects = [
+      {
+         title: "Solar-Powered UAV Structures",
+         industry: "Defense & Research",
+         year: "2025",
+         category: "Defense",
+         image: "https://images.unsplash.com/photo-1506947411487-a56738267384?q=80&w=2070&auto=format&fit=crop"
+      },
+      {
+         title: "Satellite Chassis Fabrication",
+         industry: "Space Sector",
+         year: "2024",
+         category: "Aerospace",
+         image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2072&auto=format&fit=crop"
+      },
+      {
+         title: "High-Speed Wind Tunnel Models",
+         industry: "Aerodynamics",
+         year: "2024",
+         category: "Aerospace",
+         image: "https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2070&auto=format&fit=crop"
+      }
+   ];
+
+   const visibleProjects = selectedCategory === 'All Work'
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   return (
     <div className="bg-background min-h-screen">
@@ -28,15 +42,25 @@ const ProjectsPage = () => {
                 <span className="text-secondary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Our Portfolio</span>
                 <h1 className="text-5xl font-extrabold tracking-tight text-foreground">Technical Proof of <span className="text-primary italic">Excellence.</span></h1>
              </div>
-             <div className="flex space-x-4">
-                <button className="text-sm font-bold uppercase tracking-widest border-b-2 border-primary pb-1 text-foreground">All Work</button>
-                <button className="text-sm font-bold uppercase tracking-widest text-secondary hover:text-primary pb-1 transition-colors">Aerospace</button>
-                <button className="text-sm font-bold uppercase tracking-widest text-secondary hover:text-primary pb-1 transition-colors">Defense</button>
-             </div>
+                   <div className="flex flex-wrap gap-3">
+                        {categories.map((category) => {
+                           const active = category === selectedCategory;
+                           return (
+                              <button
+                                 key={category}
+                                 onClick={() => setSelectedCategory(category)}
+                                 aria-pressed={active}
+                                 className={`px-4 py-2 rounded-sm text-[11px] font-bold uppercase tracking-widest transition-smooth border ${active ? 'border-primary bg-primary text-white shadow-sm' : 'border-border text-secondary hover:text-primary hover:border-primary/40 hover:bg-surface'}`}
+                              >
+                                 {category}
+                              </button>
+                           );
+                        })}
+                   </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {projects.map((proj, i) => (
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                  {visibleProjects.map((proj, i) => (
               <div key={i} className="group cursor-pointer">
                 <div className="aspect-[16/9] overflow-hidden bg-muted mb-8 border border-border transition-smooth group-hover:shadow-2xl group-hover:shadow-primary/5 rounded-sm">
                    <img src={proj.image} alt={proj.title} className="w-full h-full object-cover transition-smooth group-hover:scale-105" />

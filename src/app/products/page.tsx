@@ -1,6 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 const ProductsPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All Items');
+
+  const categories = ['All Items', 'Materials', 'Fabrication', 'Aerodynamics'];
+
   const products = [
     {
       id: 1,
@@ -39,14 +46,14 @@ const ProductsPage = () => {
   return (
     <div className="bg-background min-h-screen">
       {/* Dynamic Header */}
-      <section className="relative py-32 pt-40 overflow-hidden bg-slate-900 dark:bg-slate-950">
+      <section className="relative py-32 pt-40 overflow-hidden bg-surface dark:bg-slate-950">
         <div className="absolute inset-0 mesh-grid opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="inline-block px-3 py-1 bg-accent/20 border border-accent/30 text-accent rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
             Inventory & Capabilities
           </div>
-          <h1 className="text-6xl font-extrabold mb-8 transition-smooth text-white tracking-tight leading-[0.9]">Materials & <br/>Fabrication.</h1>
-          <p className="text-slate-400 max-w-2xl text-xl leading-relaxed">
+          <h1 className="text-6xl font-extrabold mb-8 transition-smooth text-foreground tracking-tight leading-[0.9]">Materials & <br/>Fabrication.</h1>
+          <p className="text-secondary max-w-2xl text-xl leading-relaxed">
             Sourcing and manufacturing high-integrity aerospace solutions based on rigid 
             engineering standards and certified composite methodologies.
           </p>
@@ -57,11 +64,19 @@ const ProductsPage = () => {
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
           <div className="flex bg-muted p-1.5 rounded-sm border border-border">
-            {['All Items', 'Materials', 'Fabrication', 'Aerodynamics'].map((cat) => (
-              <button key={cat} className={`px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded-sm transition-smooth ${cat === 'All Items' ? 'bg-card shadow-sm text-primary' : 'text-secondary hover:text-primary'}`}>
-                {cat}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const active = cat === selectedCategory;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  aria-pressed={active}
+                  className={`px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded-sm transition-smooth focus:outline-none focus:ring-2 focus:ring-primary/40 ${active ? 'bg-primary text-white shadow-sm' : 'text-secondary hover:text-primary hover:bg-white/10'}`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
           </div>
           <div className="text-[10px] font-bold uppercase tracking-widest text-secondary flex items-center">
             <span className="w-2 h-2 bg-accent rounded-full mr-2" />
@@ -70,7 +85,7 @@ const ProductsPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {products.map((product) => (
+          {(selectedCategory === 'All Items' ? products : products.filter((product) => product.category === selectedCategory)).map((product) => (
             <Link 
               key={product.id}
               href={`/products/${product.slug}`}
