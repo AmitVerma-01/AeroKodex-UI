@@ -21,6 +21,16 @@ const Capabilities = () => {
       link: "/products"
     },
     {
+      title: "Materials Testing",
+      description: "ASTM-aligned validation, batch traceability, and technical data reporting for critical material systems.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-primary">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 3.75h6m-6 0a1.5 1.5 0 00-1.5 1.5v2.25a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5m-6 0V3m6 0V3m-6 6.75h6m-6 3.75h6m-9 3a1.5 1.5 0 001.5 1.5h9A1.5 1.5 0 0021 16.5v-9A1.5 1.5 0 0019.5 6H4.5A1.5 1.5 0 003 7.5v9z" />
+        </svg>
+      ),
+      link: "/products"
+    },
+    {
       title: "Aerospace Training",
       description: "Hands-on workshops in composite fabrication, drone engineering, and CNC programming for the next generation.",
       icon: (
@@ -29,6 +39,16 @@ const Capabilities = () => {
         </svg>
       ),
       link: "/workshops"
+    },
+    {
+      title: "R&D Consulting",
+      description: "Design-for-manufacture guidance, prototyping support, and program readiness for aerospace programs.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-primary">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 4.012a7.5 7.5 0 019.176 9.176l-1.657 1.657a2.25 2.25 0 01-1.06.586l-3.217.804a2.25 2.25 0 00-1.591 1.591l-.804 3.217a2.25 2.25 0 01-.586 1.06l-1.657 1.657a7.5 7.5 0 01-9.176-9.176l1.657-1.657a2.25 2.25 0 011.06-.586l3.217-.804a2.25 2.25 0 001.591-1.591l.804-3.217a2.25 2.25 0 01.586-1.06l1.657-1.657z" />
+        </svg>
+      ),
+      link: "/quote"
     }
   ];
 
@@ -41,7 +61,7 @@ const Capabilities = () => {
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item, index) => (
             <div
               key={index}

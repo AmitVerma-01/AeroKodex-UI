@@ -52,7 +52,7 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-6 uppercase text-xs tracking-[0.2em] text-accent">Headquarters</h4>
           <ul className="space-y-4 text-sm text-slate-400">
-            <li>Kanpur, Uttar Pradesh, India</li>
+            <li>Kushinagar, Uttar Pradesh, India</li>
             <li>research@aerokodex.com</li>
             <li>+91 (0) 512 000 000</li>
           </ul>

@@ -25,16 +25,24 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
-              href="/products" 
+              href="/quote" 
               className="px-8 py-4 bg-primary-accent hover:bg-accent text-white rounded-sm font-bold transition-smooth text-center"
             >
-              Explore Materials
+              Get a Quote
             </Link>
             <Link 
-              href="/#quote" 
+              href="/workshops" 
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/30 rounded-sm font-bold transition-smooth text-center"
             >
-              Get a Quote
+              Explore Workshops
+            </Link>
+            <Link
+              href="https://wa.me/91512000000?text=Hello%20AeroKodex%20Systems%2C%20I%20would%20like%20to%20discuss%20a%20project."
+              className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-sm font-bold transition-smooth text-center"
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp Contact
             </Link>
           </div>
         </div>

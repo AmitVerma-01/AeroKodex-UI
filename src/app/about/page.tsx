@@ -1,6 +1,38 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about AeroKodex Systems, our mission, facilities, and aerospace-grade engineering standards.",
+};
+
 const AboutPage = () => {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About AeroKodex Systems",
+    url: "https://aerokodex.com/about",
+    about: {
+      "@type": "Organization",
+      name: "AeroKodex Systems",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Plot 45, Industrial Area Phase II",
+        addressLocality: "Kushinagar",
+        addressRegion: "Uttar Pradesh",
+        postalCode: "208001",
+        addressCountry: "IN",
+      },
+    },
+  };
+
   return (
     <div className="bg-background min-h-screen">
+      <Script
+        id="about-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       {/* Hero */}
       <section className="relative h-[70vh] flex items-center bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/20 via-slate-900/60 to-slate-900 z-10" />
@@ -15,6 +47,28 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Mission and Vision */}
+      <section className="py-24 bg-muted border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="bg-surface border border-border p-10 rounded-sm">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary block mb-4">Mission</span>
+            <h3 className="text-3xl font-bold text-foreground mb-4">Deliver aerospace integrity at scale.</h3>
+            <p className="text-secondary leading-relaxed">
+              We provide aerospace-grade materials, fabrication, and training with uncompromising traceability, so
+              engineering teams can deploy flight-critical systems with confidence.
+            </p>
+          </div>
+          <div className="bg-surface border border-border p-10 rounded-sm">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary block mb-4">Vision</span>
+            <h3 className="text-3xl font-bold text-foreground mb-4">Build India&apos;s most trusted aerospace supply chain.</h3>
+            <p className="text-secondary leading-relaxed">
+              Our vision is to establish Kushinagar as a global benchmark for advanced composites and technical education,
+              powering next-generation aerospace programs.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Main Philosophy Section */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 mesh-grid opacity-20 pointer-events-none" />
@@ -25,7 +79,7 @@ const AboutPage = () => {
                Precision is not an option; <br/><span className="text-primary italic">it is our architecture.</span>
              </h2>
              <p className="text-xl text-secondary leading-relaxed mb-12">
-               Founded in the industrial heart of Kanpur, AeroKodex Systems bridges the gap between material scholarship and
+               Founded in the industrial heart of Kushinagar, AeroKodex Systems bridges the gap between material scholarship and
                aerospace reality. We don&apos;t just supply parts; we engineer structural integrity for the world&apos;s most demanding environments.
              </p>
              <div className="flex gap-16 py-10 border-t border-border">
@@ -47,7 +101,7 @@ const AboutPage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-10 left-10 text-white">
                      <p className="text-[10px] font-bold uppercase tracking-[0.4em] mb-2 opacity-80 text-accent">Tech Stack</p>
-                     <h3 className="text-2xl font-bold text-white">Kanpur Center of Excellence</h3>
+                     <h3 className="text-2xl font-bold text-white">Kushinagar Center of Excellence</h3>
                   </div>
               </div>
            </div>
@@ -75,6 +129,50 @@ const AboutPage = () => {
                 </div>
               ))}
            </div>
+        </div>
+      </section>
+
+      {/* Infrastructure and Certifications */}
+      <section className="py-24 bg-muted border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary block mb-4">Infrastructure</span>
+            <h3 className="text-3xl font-bold text-foreground mb-6">Facilities built for aerospace fidelity.</h3>
+            <ul className="space-y-4 text-secondary text-sm">
+              <li>15,000 sq. ft. composites lab with controlled curing bays.</li>
+              <li>Multi-axis CNC machining and inspection suites.</li>
+              <li>Material testing and NDT validation stations.</li>
+              <li>Dedicated training and prototyping bays for workshops.</li>
+            </ul>
+          </div>
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary block mb-4">Certifications</span>
+            <h3 className="text-3xl font-bold text-foreground mb-6">Compliance that earns trust.</h3>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                "AS9100D Processes",
+                "ISO 9001:2015",
+                "ASTM Composites",
+                "Defense Vendor Registered",
+              ].map((item) => (
+                <div key={item} className="bg-surface border border-border p-6 rounded-sm">
+                  <span className="text-xs font-bold text-primary uppercase tracking-widest">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships */}
+      <section className="py-24 bg-surface border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary block mb-4">Partnerships</span>
+          <h3 className="text-3xl font-bold text-foreground mb-6">Collaborating with defense, academia, and industry.</h3>
+          <p className="text-secondary max-w-3xl mx-auto">
+            We actively partner with aerospace OEMs, defense research labs, and academic institutions to accelerate
+            material innovation and workforce readiness.
+          </p>
         </div>
       </section>
     </div>

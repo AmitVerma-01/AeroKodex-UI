@@ -6,7 +6,7 @@ const WorkshopsPage = () => {
       duration: "2 Weeks",
       difficulty: "Advanced",
       date: "May 15, 2026",
-      location: "Kanpur Training Center",
+      location: "Kushinagar Training Center",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
     },
     {
