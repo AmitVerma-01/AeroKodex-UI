@@ -1,11 +1,106 @@
 import Hero from "@/components/Hero";
 import Capabilities from "@/components/Capabilities";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       <Hero />
+
+      {/* Featured Programs Section */}
+      <section className="py-24 bg-card border-b border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-accent font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Education & Training</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-foreground tracking-tight">STEM & Aerospace Programs</h2>
+            <p className="text-secondary max-w-2xl mx-auto text-lg">
+              Empowering the next generation of innovators with practical, hands-on learning experiences in aerospace technology and core engineering.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mt-12">
+            {/* Junior Program */}
+            <div className="group relative rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+              <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                <Image 
+                  src="/CoverImage-AeroKodex-Junior.webp" 
+                  alt="AeroKodex Junior Program" 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute top-6 left-6">
+                  <span className="px-4 py-1.5 rounded-full bg-sky-500/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                    Class 4 – 8
+                  </span>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-3xl font-extrabold text-white mb-2">Junior Program</h3>
+                  <p className="text-white/80 text-sm">Where curiosity meets aerospace science through engaging, hands-on build activities.</p>
+                </div>
+              </div>
+              <div className="p-8 bg-card flex flex-col items-start">
+                <ul className="space-y-4 mb-8 w-full">
+                  {[
+                    "Basic principles of flight & aerodynamics",
+                    "Do-It-Yourself drone and glider assembly",
+                    "Interactive STEM logic building",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start text-sm text-secondary">
+                      <svg className="w-5 h-5 text-sky-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/workshops" className="mt-auto w-full py-4 text-center rounded-xl bg-sky-50 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400 font-bold hover:bg-sky-500 hover:text-white transition-colors">
+                  Explore Junior Workshops →
+                </Link>
+              </div>
+            </div>
+
+            {/* Senior Program */}
+            <div className="group relative rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+              <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                <Image 
+                  src="/CoverImage-AeroKodex-Senior.webp" 
+                  alt="AeroKodex Senior Program" 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute top-6 left-6">
+                  <span className="px-4 py-1.5 rounded-full bg-indigo-600/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                    Class 9 – 12
+                  </span>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-3xl font-extrabold text-white mb-2">Senior Program</h3>
+                  <p className="text-white/80 text-sm">Advanced engineering principles for tomorrow's aerospace innovators.</p>
+                </div>
+              </div>
+              <div className="p-8 bg-card flex flex-col items-start">
+                <ul className="space-y-4 mb-8 w-full">
+                  {[
+                    "Advanced drone dynamics and flight control",
+                    "Introduction to complex CAD & 3D Modeling",
+                    "Programming autonomous flight missions",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start text-sm text-secondary">
+                      <svg className="w-5 h-5 text-indigo-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/workshops" className="mt-auto w-full py-4 text-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 font-bold hover:bg-indigo-600 hover:text-white transition-colors">
+                  Explore Senior Workshops →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Capabilities />
 
       {/* Innovation Section */}
