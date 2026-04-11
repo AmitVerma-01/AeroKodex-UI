@@ -16,7 +16,10 @@ const Hero = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
         <div className="max-w-2xl animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-            Aerospace Grade Materials <br/>
+            <span className='text-white'>
+              Aerospace Grade Materials 
+              </span>
+            <br/>
             <span className="text-accent">& Technical Excellence</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed font-light">
