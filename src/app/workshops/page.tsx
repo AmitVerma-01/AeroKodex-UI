@@ -76,7 +76,7 @@ const WorkshopsPage = () => {
     <div className="bg-background min-h-screen">
 
       {/* ─── Level Hero ─── */}
-      <section className="relative h-[70vh] min-h-130 flex flex-col justify-end overflow-hidden">
+      <section className="relative h-[75vh] min-h-130 flex flex-col justify-end overflow-hidden">
         {/* Cover image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -87,12 +87,7 @@ const WorkshopsPage = () => {
             className="object-cover transition-all duration-700"
             sizes="100vw"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.25) 100%)`,
-            }}
-          />
+          <div className="absolute inset-0 hero-overlay-vertical" />
         </div>
 
         {/* Level switcher tabs — overlaid */}
@@ -130,12 +125,7 @@ const WorkshopsPage = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full">
           <div className="max-w-2xl animate-fade-in-up">
             <span
-              className="inline-block text-xs font-bold uppercase tracking-[0.3em] mb-4 px-3 py-1 rounded-full"
-              style={{
-                background: `linear-gradient(135deg, ${levelInfo.accentFrom}33, ${levelInfo.accentTo}33)`,
-                border: `1px solid ${levelInfo.accentFrom}55`,
-                color: `var(--accent)`,
-              }}
+              className={`chip-program mb-4 ${activeLevel === 'junior' ? 'chip-program-junior' : 'chip-program-senior'}`}
             >
               {levelInfo.grades} Program
             </span>
@@ -225,8 +215,8 @@ const WorkshopsPage = () => {
         {/* Error */}
         {error && (
           <div className="text-center py-24 bg-card border border-border rounded-xl">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-50 dark:bg-red-950/20 flex items-center justify-center">
-              <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--status-error-bg)] flex items-center justify-center">
+              <svg className="w-8 h-8 text-[var(--status-error)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
             </div>
             <p className="text-secondary mb-6">{error}</p>
             <button
@@ -318,7 +308,7 @@ const WorkshopsPage = () => {
                   </div>
                   {workshop.is_fully_booked && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                      <span className="bg-red-500 text-white text-xs font-bold px-5 py-2 uppercase tracking-widest rounded-full">
+                      <span className="badge-error text-xs font-bold px-5 py-2 uppercase tracking-widest rounded-full">
                         Fully Booked
                       </span>
                     </div>
@@ -329,12 +319,12 @@ const WorkshopsPage = () => {
                 <div className="p-7 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-4">
                     <span
-                      className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
+                      className={`text-label px-2.5 py-1 rounded-full border ${
                         workshop.difficulty === 'Advanced'
-                          ? 'text-red-500 border-red-500/20 bg-red-500/10'
+                          ? 'badge-difficulty-advanced'
                           : workshop.difficulty === 'Intermediate'
-                          ? 'text-amber-500 border-amber-500/20 bg-amber-500/10'
-                          : 'text-emerald-600 border-emerald-500/20 bg-emerald-500/10'
+                          ? 'badge-difficulty-intermediate'
+                          : 'badge-difficulty-beginner'
                       }`}
                     >
                       {workshop.difficulty}
@@ -353,7 +343,7 @@ const WorkshopsPage = () => {
                   <div className="mb-5">
                     <div className="flex justify-between text-[10px] font-bold text-secondary uppercase tracking-widest mb-2">
                       <span>Seats</span>
-                      <span className={workshop.seats_available <= 5 ? 'text-amber-500' : ''}>
+                      <span className={workshop.seats_available <= 5 ? 'text-[var(--status-warning)]' : ''}>
                         {workshop.seats_available} of {workshop.total_seats} left
                       </span>
                     </div>
@@ -414,7 +404,7 @@ const WorkshopsPage = () => {
               >
                 <div className="relative h-40 overflow-hidden">
                   <Image src={lv.cover} alt={lv.label} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="100vw" />
-                  <div className="absolute inset-0" style={{ background: `linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%)` }} />
+                  <div className="absolute inset-0 hero-overlay-vertical" />
                   <div className="absolute bottom-4 left-5 right-5">
                     <div className="text-xs font-bold uppercase tracking-widest text-white/60 mb-1">{lv.grades}</div>
                     <div className="text-xl font-extrabold text-white">{lv.label} Program</div>

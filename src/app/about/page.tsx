@@ -3,7 +3,7 @@ const AboutPage = () => {
     <div className="bg-background min-h-screen">
       {/* Hero */}
       <section className="relative h-[70vh] flex items-center bg-primary-accent overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-primary-accent/20 via-primary-accent/70 to-primary-accent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-accent/20 via-primary-accent/70 to-primary-accent z-10" />
         <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=2070&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-70 scale-105 animate-subtle-zoom" alt="Aerospace research" />
         <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
           <div className="inline-block px-4 py-1.5 bg-accent/20 backdrop-blur-md border border-accent/30 text-white rounded-full text-[10px] font-bold uppercase tracking-[0.4em] mb-6">
@@ -44,7 +44,7 @@ const AboutPage = () => {
             <div className="absolute -inset-4 bg-primary/5 rounded-sm -rotate-2 group-hover:rotate-0 transition-smooth" />
             <div className="relative aspect-square rounded-sm overflow-hidden border border-border bg-card shadow-2xl shadow-primary/5">
               <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop" className="object-cover w-full h-full transition-smooth group-hover:scale-105" alt="Lab environment" />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-10 left-10 text-white">
                 <p className="text-[10px] font-bold uppercase tracking-[0.4em] mb-2 opacity-80 text-accent">Tech Stack</p>
                 <h3 className="text-2xl font-bold text-white">Kushinagar Center of Excellence</h3>

@@ -121,7 +121,7 @@ const DashboardPage = () => {
                           {new Date(booking.workshop_date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })} · {booking.workshop_location}
                         </div>
                       </div>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${booking.payment_status === 'CONFIRMED' ? 'text-green-600 border-green-300 bg-green-50 dark:bg-green-950/20' : 'text-accent border-accent/20 bg-accent/10'}`}>
+                      <span className={`${booking.payment_status === 'CONFIRMED' ? 'badge-success' : 'badge-warning'}`}>
                         {booking.payment_status}
                       </span>
                     </div>

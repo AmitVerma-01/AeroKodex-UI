@@ -107,10 +107,10 @@ const WorkshopDetailPage = ({ params }: Props) => {
 
   const difficultyStyle =
     workshop.difficulty === 'Advanced'
-      ? 'text-red-500 border-red-500/20 bg-red-500/10'
+      ? 'badge-difficulty-advanced'
       : workshop.difficulty === 'Intermediate'
-      ? 'text-amber-500 border-amber-500/20 bg-amber-500/10'
-      : 'text-emerald-600 border-emerald-500/20 bg-emerald-500/10';
+      ? 'badge-difficulty-intermediate'
+      : 'badge-difficulty-beginner';
 
   const workshopImage = workshop.image
     ? workshop.image.startsWith('http')
@@ -135,7 +135,7 @@ const WorkshopDetailPage = ({ params }: Props) => {
           ) : (
             <div className="w-full h-full bg-primary-accent" />
           )}
-          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-14 w-full">
@@ -149,14 +149,14 @@ const WorkshopDetailPage = ({ params }: Props) => {
           </nav>
 
           <div className="flex flex-wrap gap-3 mb-5">
-            <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${difficultyStyle}`}>
+            <span className={`text-label px-3 py-1 rounded-full border ${difficultyStyle}`}>
               {workshop.difficulty}
             </span>
             <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border text-white/70 border-white/20 bg-white/5">
               {workshop.category?.name || 'Aerospace'}
             </span>
             {workshop.is_fully_booked && (
-              <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-red-500 text-white">
+              <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full badge-error">
                 Fully Booked
               </span>
             )}
@@ -284,10 +284,10 @@ const WorkshopDetailPage = ({ params }: Props) => {
                   <span>Seats Available</span>
                   <span className={
                     workshop.is_fully_booked
-                      ? 'text-red-500'
+                      ? 'text-[var(--status-error)]'
                       : workshop.seats_available <= 5
-                      ? 'text-amber-500'
-                      : 'text-emerald-600'
+                      ? 'text-[var(--status-warning)]'
+                      : 'text-[var(--status-success)]'
                   }>
                     {workshop.is_fully_booked ? 'Fully Booked' : `${workshop.seats_available} / ${workshop.total_seats}`}
                   </span>
@@ -295,13 +295,13 @@ const WorkshopDetailPage = ({ params }: Props) => {
                 <div className="h-2.5 bg-muted rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
-                      workshop.is_fully_booked ? 'bg-red-500' : 'bg-primary'
+                      workshop.is_fully_booked ? 'bg-status-error' : 'bg-primary'
                     }`}
                     style={{ width: `${seatPct}%` }}
                   />
                 </div>
                 {!workshop.is_fully_booked && workshop.seats_available <= 10 && (
-                  <p className="text-xs text-amber-500 font-medium mt-2">
+                  <p className="text-xs text-[var(--status-warning)] font-medium mt-2">
                     ⚡ Only {workshop.seats_available} seats remaining!
                   </p>
                 )}
@@ -334,19 +334,15 @@ const WorkshopDetailPage = ({ params }: Props) => {
 
               {/* Booking feedback */}
               {booking.status === 'success' && (
-                <div className="mb-5 p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 rounded-xl text-emerald-700 dark:text-emerald-400 text-sm">
-                  <div className="flex items-start gap-2">
-                    <svg className="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    {booking.message}
-                  </div>
+                <div className="alert-success mb-5 flex items-start gap-2">
+                  <svg className="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {booking.message}
                 </div>
               )}
               {booking.status === 'error' && (
-                <div className="mb-5 p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-xl text-red-600 dark:text-red-400 text-sm">
-                  {booking.message}
-                </div>
+                <div className="alert-error mb-5">{booking.message}</div>
               )}
 
               {/* CTA */}

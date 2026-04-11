@@ -78,8 +78,8 @@ const ResetPage = () => {
 
         {success ? (
           <div className="text-center space-y-6">
-            <div className="w-16 h-16 bg-green-50 dark:bg-green-950/20 rounded-full flex items-center justify-center mx-auto border border-green-200 dark:border-green-800">
-              <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 bg-[var(--status-success-bg)] rounded-full flex items-center justify-center mx-auto border border-[var(--status-success-border)]">
+              <svg className="w-8 h-8 text-[var(--status-success)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -91,7 +91,7 @@ const ResetPage = () => {
         ) : (
           <>
             {error && (
-              <div className="mb-6 p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-sm text-red-600 dark:text-red-400 text-sm font-medium">
+              <div className="alert-error mb-6">
                 {error}
               </div>
             )}

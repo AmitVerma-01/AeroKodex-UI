@@ -12,7 +12,7 @@ export default function Home() {
       <section className="py-24 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-accent font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Education & Training</span>
+            <span className="section-label">Education & Training</span>
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-foreground tracking-tight">STEM & Aerospace Programs</h2>
             <p className="text-secondary max-w-2xl mx-auto text-lg">
               Empowering the next generation of innovators with practical, hands-on learning experiences in aerospace technology and core engineering.
@@ -29,7 +29,7 @@ export default function Home() {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-6 left-6">
                   <span className="px-4 py-1.5 rounded-full program-chip-junior text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
                     Class 4 – 8
@@ -68,7 +68,7 @@ export default function Home() {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-6 left-6">
                   <span className="px-4 py-1.5 rounded-full program-chip-senior text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
                     Class 9 – 12
@@ -107,7 +107,7 @@ export default function Home() {
       <section className="py-24 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-16">
           <div className="flex-1">
-            <span className="text-accent font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Research Hub</span>
+            <span className="section-label">Research Hub</span>
             <h2 className="text-3xl font-bold mb-6 text-foreground">Advancing Aerospace Innovation</h2>
             <p className="text-secondary leading-relaxed mb-8">
               At AeroKodex Systems, we bridge the gap between advanced material science and practical application.
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
             <div>
-              <span className="text-accent font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Request a Quote</span>
+              <span className="section-label">Request a Quote</span>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-foreground tracking-tight">Get a custom quote for your next aerospace project</h2>
               <p className="text-secondary max-w-2xl text-lg leading-relaxed mb-8">
                 Share your project details and our engineering team will prepare a tailored quotation for advanced composite fabrication, materials, or training services.
@@ -164,7 +164,7 @@ export default function Home() {
                 Request a Quote
               </Link>
             </div>
-            <div className="rounded-4xl overflow-hidden border border-border shadow-sm bg-linear-to-br from-accent/10 via-surface to-background">
+            <div className="rounded-4xl overflow-hidden border border-border shadow-sm bg-gradient-to-br from-accent/10 via-surface to-background">
               <div className="p-12">
                 <div className="text-sm uppercase tracking-[0.3em] text-secondary font-bold mb-4">Fast Quote Support</div>
                 <div className="text-3xl font-extrabold text-foreground mb-6">AeroKodex Quote Desk</div>

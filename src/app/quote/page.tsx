@@ -208,7 +208,7 @@ const QuotePage = () => {
         </div>
 
         {error && (
-          <div className="mb-8 p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-sm text-red-600 dark:text-red-400 text-sm">
+          <div className="alert-error mb-8">
             {error}
           </div>
         )}

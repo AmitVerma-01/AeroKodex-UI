@@ -169,7 +169,7 @@ const ProductDetailsPage = ({ params }: Props) => {
                     {activeVariant.sku && (
                       <div className="text-xs text-secondary mt-1">SKU: {activeVariant.sku}</div>
                     )}
-                    <div className={`text-xs font-bold mt-1 ${activeVariant.stock > 0 ? 'text-green-600' : 'text-red-500'}`}>
+                    <div className={`text-xs font-bold mt-1 ${activeVariant.stock > 0 ? 'text-[var(--status-success)]' : 'text-[var(--status-error)]'}`}>
                       {activeVariant.stock > 0 ? `${activeVariant.stock} in stock` : 'Out of stock'}
                     </div>
                   </div>

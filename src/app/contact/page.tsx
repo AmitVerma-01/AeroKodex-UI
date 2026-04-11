@@ -113,8 +113,8 @@ const ContactPage = () => {
             <div className="relative bg-card p-12 lg:p-16 border border-border shadow-2xl shadow-primary/5 rounded-sm animate-fade-in-up">
               {status === 'success' ? (
                 <div className="text-center py-12 space-y-6">
-                  <div className="w-16 h-16 bg-green-50 dark:bg-green-950/20 rounded-full flex items-center justify-center mx-auto border border-green-200 dark:border-green-800">
-                    <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-[var(--status-success-bg)] rounded-full flex items-center justify-center mx-auto border border-[var(--status-success-border)]">
+                    <svg className="w-8 h-8 text-[var(--status-success)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -127,7 +127,7 @@ const ContactPage = () => {
               ) : (
                 <form className="space-y-8" onSubmit={handleSubmit}>
                   {status === 'error' && (
-                    <div className="p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-sm text-red-600 dark:text-red-400 text-sm">
+                    <div className="alert-error">
                       {errorMsg}
                     </div>
                   )}

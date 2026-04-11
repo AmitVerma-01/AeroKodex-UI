@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from './ThemeProvider';
 import ThemeToggle from './ThemeToggle';
 import { useAuth } from '@/context/AuthContext';
@@ -11,6 +11,7 @@ const Navbar = () => {
   const { theme } = useTheme();
   const { user, isAuthenticated, logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -30,14 +31,15 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Materials', href: '/products' },
     { name: 'Workshops', href: '/workshops' },
+    { name: 'Materials', href: '/products' },
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
   ];
 
   const showSurfaceNav = isScrolled || theme === 'light';
   const linkColor = showSurfaceNav ? 'text-foreground hover:text-primary' : 'text-white/80 hover:text-white';
+  const activeLinkColor = showSurfaceNav ? 'text-primary' : 'text-primary';
   const logoTextColor = showSurfaceNav ? 'text-foreground' : 'text-white';
   const logoSubColor = showSurfaceNav ? 'text-secondary' : 'text-white/60';
 
@@ -68,11 +70,22 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className={`text-sm font-medium transition-smooth ${linkColor}`}>
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = link.href === '/' ? pathname === '/' : pathname?.startsWith(link.href);
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-sm font-medium transition-smooth pb-1 ${
+                  isActive
+                    ? `border-b-2 border-primary ${activeLinkColor}`
+                    : linkColor
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
           <ThemeToggle isScrolled={isScrolled} />
 
           {isAuthenticated ? (
@@ -161,16 +174,21 @@ const Navbar = () => {
       {isMobileOpen && (
         <div className="md:hidden glass-effect bg-surface/85 border-t border-border backdrop-blur-xl animate-fade-in">
           <div className="max-w-7xl mx-auto px-6 py-6 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="block text-sm font-medium text-secondary hover:text-primary transition-colors py-2"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.href === '/' ? pathname === '/' : pathname?.startsWith(link.href);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileOpen(false)}
+                  className={`block text-sm font-medium py-2 transition-colors ${
+                    isActive ? 'text-primary border-l-2 border-primary pl-3' : 'text-secondary hover:text-primary'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             {isAuthenticated ? (
               <>
                 <Link href="/dashboard" onClick={() => setIsMobileOpen(false)} className="block text-sm font-medium text-secondary hover:text-primary transition-colors py-2">
