@@ -134,7 +134,7 @@ const WorkshopsPage = () => {
               style={{
                 background: `linear-gradient(135deg, ${levelInfo.accentFrom}33, ${levelInfo.accentTo}33)`,
                 border: `1px solid ${levelInfo.accentFrom}55`,
-                color: levelInfo.accentFrom,
+                color: `#0ea5e9`,
               }}
             >
               {levelInfo.grades} Program
