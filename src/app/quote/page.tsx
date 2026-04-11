@@ -1,12 +1,88 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useEffect, useMemo, useState, FormEvent } from 'react';
 import { inquiriesApi } from '@/lib/api';
 
 const SERVICE_TYPES = ['Custom Fabrication', 'Material Supply', 'Technical Consulting', 'Workshop Training'];
 const MATERIAL_GRADES = ['High-Modulus Carbon Fiber', 'Aluminum 7075-T6', 'Titanium Grade 5', 'Epoxy Resin Systems', 'Custom Alloy'];
 const TIMELINES = ['Urgent (< 1 week)', '1–2 Weeks', '1 Month', '2–3 Months', 'Flexible'];
 const BUDGETS = ['< ₹50,000', '₹50,000 – ₹2L', '₹2L – ₹10L', '₹10L+', 'Budget TBD'];
+
+type ServiceType = typeof SERVICE_TYPES[number];
+
+const SERVICE_FLOW_CONFIG: Record<ServiceType, {
+  productInterestPlaceholder: string;
+  step2Title: string;
+  step2Description: string;
+  specificationsPlaceholder: string;
+  quantityLabel: string;
+  quantityPlaceholder: string;
+  materialLabel: string;
+  materialOptions: string[];
+  recommendedTimeline: string;
+  recommendedBudget: string;
+}> = {
+  'Custom Fabrication': {
+    productInterestPlaceholder: 'e.g. CNC Drone Frame, Composite Fuselage Panel',
+    step2Title: 'Fabrication Specifications',
+    step2Description: 'Share tolerances, finishing, and performance expectations so we can quote accurately.',
+    specificationsPlaceholder: 'Describe dimensions, tolerances, load limits, surface finish, and compliance requirements.',
+    quantityLabel: 'Dimensions / Production Quantity',
+    quantityPlaceholder: 'e.g. 500mm × 500mm, pilot batch of 10 units',
+    materialLabel: 'Preferred Material System',
+    materialOptions: MATERIAL_GRADES,
+    recommendedTimeline: '1–2 Weeks',
+    recommendedBudget: '₹2L – ₹10L',
+  },
+  'Material Supply': {
+    productInterestPlaceholder: 'e.g. Carbon Fiber Sheet 2mm, Titanium Grade 5 Rods',
+    step2Title: 'Material Requirement Details',
+    step2Description: 'Specify material forms and quantities to receive availability and pricing quickly.',
+    specificationsPlaceholder: 'Mention grade, thickness, dimensions, certifications, and quality documentation required.',
+    quantityLabel: 'Required Quantity',
+    quantityPlaceholder: 'e.g. 50 sheets, 200 kg, 30 linear meters',
+    materialLabel: 'Primary Grade Preference',
+    materialOptions: MATERIAL_GRADES,
+    recommendedTimeline: 'Urgent (< 1 week)',
+    recommendedBudget: '₹50,000 – ₹2L',
+  },
+  'Technical Consulting': {
+    productInterestPlaceholder: 'e.g. Airframe optimization review, process advisory',
+    step2Title: 'Consulting Scope',
+    step2Description: 'Outline your challenge so our engineers can scope effort and engagement format.',
+    specificationsPlaceholder: 'Describe current challenges, desired outcomes, constraints, and support expectations.',
+    quantityLabel: 'Scope Scale / Team Size',
+    quantityPlaceholder: 'e.g. 3 subsystems, 6-week engagement, support for 2 teams',
+    materialLabel: 'Domain Focus',
+    materialOptions: [
+      'Design Validation',
+      'Aerospace Compliance',
+      'Manufacturing Process Optimization',
+      'Material Selection Advisory',
+      'Flight Test Planning',
+    ],
+    recommendedTimeline: '1 Month',
+    recommendedBudget: '₹2L – ₹10L',
+  },
+  'Workshop Training': {
+    productInterestPlaceholder: 'e.g. Drone Build Bootcamp, CAD for Aerospace Students',
+    step2Title: 'Training Program Requirements',
+    step2Description: 'Tell us audience level and outcomes so we can propose the best workshop format.',
+    specificationsPlaceholder: 'Include participant profile, learning objectives, preferred format, and expected outcomes.',
+    quantityLabel: 'Batch Size / Sessions',
+    quantityPlaceholder: 'e.g. 40 students, 2 sessions, 1 hands-on lab track',
+    materialLabel: 'Workshop Track Preference',
+    materialOptions: [
+      'Junior Aerospace Foundations',
+      'Senior Drone Systems',
+      'CAD & 3D Modeling',
+      'Autonomous Flight Programming',
+      'Custom Institutional Program',
+    ],
+    recommendedTimeline: '2–3 Months',
+    recommendedBudget: '₹50,000 – ₹2L',
+  },
+};
 
 const QuotePage = () => {
   const [step, setStep] = useState(1);
@@ -30,6 +106,14 @@ const QuotePage = () => {
   const [company, setCompany] = useState('');
   const [timeline, setTimeline] = useState(TIMELINES[2]);
   const [budgetRange, setBudgetRange] = useState(BUDGETS[4]);
+
+  const serviceConfig = useMemo(() => SERVICE_FLOW_CONFIG[serviceType], [serviceType]);
+
+  useEffect(() => {
+    setMaterialPreferences(serviceConfig.materialOptions[0]);
+    setTimeline(serviceConfig.recommendedTimeline);
+    setBudgetRange(serviceConfig.recommendedBudget);
+  }, [serviceConfig]);
 
   const steps = [
     { id: 1, title: 'Service Details' },
@@ -155,7 +239,7 @@ const QuotePage = () => {
                     value={productInterest}
                     onChange={(e) => setProductInterest(e.target.value)}
                     className="w-full p-4 text-sm border border-border bg-input text-foreground focus:outline-none focus:border-primary rounded-sm"
-                    placeholder="e.g. Carbon Fiber Sheet 2mm, CNC Drone Frame"
+                    placeholder={serviceConfig.productInterestPlaceholder}
                   />
                 </div>
               </div>
@@ -164,7 +248,13 @@ const QuotePage = () => {
             {/* Step 2 */}
             {step === 2 && (
               <div className="space-y-8">
-                <h3 className="text-xl font-bold text-foreground">Technical Specifications</h3>
+                <div>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-3">
+                    Based on: {serviceType}
+                  </span>
+                  <h3 className="text-xl font-bold text-foreground">{serviceConfig.step2Title}</h3>
+                  <p className="text-secondary text-sm mt-2">{serviceConfig.step2Description}</p>
+                </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold text-secondary uppercase tracking-widest">Detailed Specifications <span className="text-red-500">*</span></label>
                   <textarea
@@ -173,27 +263,27 @@ const QuotePage = () => {
                     value={specifications}
                     onChange={(e) => setSpecifications(e.target.value)}
                     className="w-full p-4 text-sm border border-border bg-input text-foreground focus:outline-none focus:border-primary rounded-sm"
-                    placeholder="Describe your technical requirements, tolerances, surface finish, etc."
+                    placeholder={serviceConfig.specificationsPlaceholder}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-secondary uppercase tracking-widest">Dimensions / Quantity</label>
+                  <label className="text-[10px] font-bold text-secondary uppercase tracking-widest">{serviceConfig.quantityLabel}</label>
                   <input
                     type="text"
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
                     className="w-full p-4 text-sm border border-border bg-input text-foreground focus:outline-none focus:border-primary rounded-sm"
-                    placeholder="e.g. 500mm × 500mm, 10 units"
+                    placeholder={serviceConfig.quantityPlaceholder}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-secondary uppercase tracking-widest">Material Grade Preferred</label>
+                  <label className="text-[10px] font-bold text-secondary uppercase tracking-widest">{serviceConfig.materialLabel}</label>
                   <select
                     value={materialPreferences}
                     onChange={(e) => setMaterialPreferences(e.target.value)}
                     className="w-full p-4 text-sm border border-border bg-input text-foreground focus:outline-none focus:border-primary appearance-none rounded-sm"
                   >
-                    {MATERIAL_GRADES.map((m) => <option key={m}>{m}</option>)}
+                    {serviceConfig.materialOptions.map((m) => <option key={m}>{m}</option>)}
                   </select>
                 </div>
               </div>
@@ -203,6 +293,9 @@ const QuotePage = () => {
             {step === 3 && (
               <div className="space-y-8">
                 <h3 className="text-xl font-bold text-foreground">Contact & Project Details</h3>
+                <p className="text-secondary text-sm">
+                  Suggested defaults were set from your {serviceType} selection. You can still customize timeline and budget.
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold text-secondary uppercase tracking-widest">Full Name <span className="text-red-500">*</span></label>

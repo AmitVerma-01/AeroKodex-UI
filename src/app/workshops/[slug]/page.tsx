@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, use } from 'react';
-import { workshopsApi, Workshop } from '@/lib/api';
+import { workshopsApi, Workshop, API_BASE } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 
 interface Props {
@@ -112,14 +112,20 @@ const WorkshopDetailPage = ({ params }: Props) => {
       ? 'text-amber-500 border-amber-500/20 bg-amber-500/10'
       : 'text-emerald-600 border-emerald-500/20 bg-emerald-500/10';
 
+  const workshopImage = workshop.image
+    ? workshop.image.startsWith('http')
+      ? workshop.image
+      : `${API_BASE.replace(/\/api\/?$/, '')}${workshop.image}`
+    : null;
+
   return (
     <div className="bg-background min-h-screen">
       {/* ─── Full-bleed Hero ─── */}
       <section className="relative h-[65vh] min-h-[480px] flex flex-col justify-end overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {workshop.image ? (
+          {workshopImage ? (
             <Image
-              src={workshop.image}
+              src={workshopImage}
               alt={workshop.title}
               fill
               priority

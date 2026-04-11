@@ -138,6 +138,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Quote Section */}
+      <section id="quote" className="py-24 bg-surface border-t border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+            <div>
+              <span className="text-accent font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Request a Quote</span>
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-foreground tracking-tight">Get a custom quote for your next aerospace project</h2>
+              <p className="text-secondary max-w-2xl text-lg leading-relaxed mb-8">
+                Share your project details and our engineering team will prepare a tailored quotation for advanced composite fabrication, materials, or training services.
+              </p>
+              <ul className="space-y-4 mb-10">
+                {[
+                  'Rapid response within 24 hours',
+                  'Detailed material and fabrication estimates',
+                  'Support for custom engineering and workshop packages',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start text-sm text-foreground">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-accent/10 text-accent mr-3 text-xs font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/quote" className="inline-block px-10 py-4 bg-accent text-white font-bold rounded-sm hover:bg-primary-accent transition-smooth">
+                Request a Quote
+              </Link>
+            </div>
+            <div className="rounded-[2rem] overflow-hidden border border-border shadow-sm bg-gradient-to-br from-accent/10 via-surface to-white dark:from-white/5 dark:via-slate-950/10 dark:to-slate-950/0">
+              <div className="p-12">
+                <div className="text-sm uppercase tracking-[0.3em] text-secondary font-bold mb-4">Fast Quote Support</div>
+                <div className="text-3xl font-extrabold text-foreground mb-6">AeroKodex Quote Desk</div>
+                <p className="text-secondary leading-relaxed mb-8">
+                  Our quote desk helps you move from concept to production with confidence, whether you need material sourcing, precision components, or expert consultation.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 text-primary grid place-items-center">1</div>
+                    <div>
+                      <p className="font-bold text-foreground">Submit your requirements</p>
+                      <p className="text-secondary text-sm">Provide key details about your project scope and materials.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 text-primary grid place-items-center">2</div>
+                    <div>
+                      <p className="font-bold text-foreground">Review our proposal</p>
+                      <p className="text-secondary text-sm">Receive a customized quote with lead-time and pricing.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 text-primary grid place-items-center">3</div>
+                    <div>
+                      <p className="font-bold text-foreground">Kick off production</p>
+                      <p className="text-secondary text-sm">Start your order once the quote is approved.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative py-20 overflow-hidden bg-surface-alt border-t border-border">
         <div className="absolute inset-0 pointer-events-none opacity-60 dark:opacity-40" aria-hidden="true">
