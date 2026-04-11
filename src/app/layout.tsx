@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AeroKodex Systems | Aerospace Grade Materials & Technical Excellence",
   description: "AeroKodex Systems provides advanced composite fabrication, precision engineering, and specialized solutions for the aerospace and defense sectors.",
-  keywords: ["aerospace", "carbon fiber", "CNC machining", "technical education", "Kanpur", "India"],
+  keywords: ["aerospace", "carbon fiber", "CNC machining", "technical education", "Kushinagar", "India"],
 };
 
 export default function RootLayout({

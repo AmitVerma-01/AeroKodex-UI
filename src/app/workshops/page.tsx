@@ -14,7 +14,7 @@ const LEVELS: { key: Level; label: string; grades: string; tagline: string; cove
     label: 'Junior',
     grades: 'Class 4 – 8',
     tagline: 'Where curiosity meets aerospace science',
-    cover: '/CoverImage-AeroKodex-Junior.webp',
+    cover: '/CoverImage-AeroKodex-Junior1.webp',
     accentFrom: '#0ea5e9',
     accentTo: '#6366f1',
     badge: 'bg-sky-500',
@@ -24,7 +24,7 @@ const LEVELS: { key: Level; label: string; grades: string; tagline: string; cove
     label: 'Senior',
     grades: 'Class 9 – 12',
     tagline: 'Advanced engineering for tomorrow\'s innovators',
-    cover: '/CoverImage-AeroKodex-Senior.webp',
+    cover: '/CoverImage-AeroKodex-Senior1.webp',
     accentFrom: '#003366',
     accentTo: '#0ea5e9',
     badge: 'bg-indigo-600',
@@ -140,7 +140,7 @@ const WorkshopsPage = () => {
               {levelInfo.grades} Program
             </span>
             <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-[1.1] mb-5 tracking-tight">
-              AeroKodex{' '}
+              <span className="text-white">AeroKodex{' '}</span>
               <span 
                 className="text-transparent bg-clip-text"
                 style={{ backgroundImage: `linear-gradient(135deg, ${levelInfo.accentFrom}, ${levelInfo.accentTo})` }}

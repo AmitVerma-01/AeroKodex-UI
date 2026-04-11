@@ -23,11 +23,11 @@ export default function Home() {
             {/* Junior Program */}
             <div className="group relative rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
               <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <Image 
-                  src="/CoverImage-AeroKodex-Junior.webp" 
-                  alt="AeroKodex Junior Program" 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                <Image
+                  src="/CoverImage-AeroKodex-Junior1.webp"
+                  alt="AeroKodex Junior Program"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-6 left-6">
@@ -62,11 +62,11 @@ export default function Home() {
             {/* Senior Program */}
             <div className="group relative rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
               <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <Image 
-                  src="/CoverImage-AeroKodex-Senior.webp" 
-                  alt="AeroKodex Senior Program" 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                <Image
+                  src="/CoverImage-AeroKodex-Senior1.webp"
+                  alt="AeroKodex Senior Program"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-6 left-6">
@@ -130,10 +130,10 @@ export default function Home() {
             </ul>
           </div>
           <div className="flex-1 bg-card rounded-sm p-8 min-h-[300px] flex items-center justify-center border border-border">
-             <div className="text-center">
-               <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold block mb-2">Facility Spotlight</span>
-               <div className="text-2xl font-bold text-primary">Kanpur Research Hub</div>
-             </div>
+            <div className="text-center">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold block mb-2">Facility Spotlight</span>
+              <div className="text-2xl font-bold text-primary">Kushinagar Research Hub</div>
+            </div>
           </div>
         </div>
       </section>

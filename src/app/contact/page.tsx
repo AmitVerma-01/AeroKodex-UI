@@ -79,7 +79,7 @@ const ContactPage = () => {
                   <p className="text-secondary text-base leading-relaxed">
                     AeroKodex Systems, Plot 45<br />
                     Industrial Area Phase II<br />
-                    Kanpur, Uttar Pradesh 208001
+                    Kushinagar, Uttar Pradesh 208001
                   </p>
                 </div>
               </div>
@@ -222,7 +222,7 @@ const ContactPage = () => {
         <div className="text-center">
           <div className="w-16 h-1 bg-primary mx-auto mb-6" />
           <h3 className="text-2xl font-extrabold tracking-tight text-foreground">Interactive Facility Map</h3>
-          <p className="text-secondary text-sm mt-2 font-medium">Kanpur Operations Hub</p>
+          <p className="text-secondary text-sm mt-2 font-medium">Kushinagar Operations Hub</p>
         </div>
       </section>
     </div>
