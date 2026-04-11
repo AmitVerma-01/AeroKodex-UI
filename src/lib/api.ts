@@ -3,7 +3,7 @@
 // Base URL exposed via env var so it can be overridden in production
 // ---------------------------------------------------------------------------
 
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000/api';
+export const API_BASE = process.env.DJANGO_API_URL ?? 'https://aerokodex-14307f520d27.herokuapp.com/api';
 
 // ---- token helpers (localStorage in client, SSR-safe) --------------------
 
