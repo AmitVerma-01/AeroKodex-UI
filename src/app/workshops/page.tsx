@@ -76,7 +76,7 @@ const WorkshopsPage = () => {
     <div className="bg-background min-h-screen">
 
       {/* ─── Level Hero ─── */}
-      <section className="relative h-[70vh] min-h-[520px] flex flex-col justify-end overflow-hidden">
+      <section className="relative h-[70vh] min-h-130 flex flex-col justify-end overflow-hidden">
         {/* Cover image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -105,7 +105,7 @@ const WorkshopsPage = () => {
                 className={`
                   relative px-8 py-3 rounded-full text-sm font-bold tracking-wider transition-all duration-300 focus:outline-none focus:ring-0
                   ${activeLevel === lv.key
-                    ? 'text-white shadow-lg'
+                    ? 'text-white shadow-2xl'
                     : 'text-white/60 hover:text-white/90'
                   }
                 `}

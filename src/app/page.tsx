@@ -36,7 +36,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-3xl font-extrabold text-white mb-2">Junior Program</h3>
+                  <p className="text-3xl font-extrabold text-white mb-2">Junior Program</p>
                   <p className="text-white/80 text-sm">Where curiosity meets aerospace science through engaging, hands-on build activities.</p>
                 </div>
               </div>
@@ -75,8 +75,8 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-3xl font-extrabold text-white mb-2">Senior Program</h3>
-                  <p className="text-white/80 text-sm">Advanced engineering principles for tomorrow's aerospace innovators.</p>
+                  <p className="text-3xl font-extrabold text-white mb-2">Senior Program</p>
+                  <p className="text-white/80 text-sm">Advanced engineering principles for tomorrow&apos;s aerospace innovators.</p>
                 </div>
               </div>
               <div className="p-8 bg-card flex flex-col items-start">
@@ -139,10 +139,14 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-slate-900 dark:bg-slate-950 py-20">
+      <section className="relative py-20 overflow-hidden bg-surface-alt border-t border-border">
+        <div className="absolute inset-0 pointer-events-none opacity-60 dark:opacity-40" aria-hidden="true">
+          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+        </div>
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">Ready to start your project?</h2>
-          <p className="text-slate-400 mb-10 text-lg">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-8">Ready to start your project?</h2>
+          <p className="text-secondary mb-10 text-lg">
             Consult with our engineering team for custom fabrication and specialized material supply.
           </p>
           <Link href="/quote" className="inline-block px-10 py-4 bg-accent text-white font-bold rounded-sm hover:bg-primary-accent transition-smooth">

@@ -8,7 +8,7 @@ import { productsApi, Category, Product, PaginatedResponse } from '@/lib/api';
 
 const ProductSkeleton = () => (
   <div className="bg-surface border border-border rounded-sm overflow-hidden animate-pulse">
-    <div className="aspect-[16/10] bg-muted" />
+    <div className="aspect-16/10 bg-muted" />
     <div className="p-8 space-y-4">
       <div className="h-5 bg-muted rounded w-3/4" />
       <div className="h-4 bg-muted rounded w-1/2" />
@@ -56,19 +56,73 @@ const ProductsPage = () => {
   return (
     <div className="bg-background min-h-screen">
       {/* Dynamic Header */}
-      <section className="relative py-32 pt-40 overflow-hidden bg-surface dark:bg-slate-950">
-        <div className="absolute inset-0 mesh-grid opacity-10 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="inline-block px-3 py-1 bg-accent/20 border border-accent/30 text-accent rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
-            Inventory & Capabilities
+      <section className="relative pt-40 pb-24 overflow-hidden border-b border-border bg-surface-alt">
+        <div className="absolute inset-0 mesh-grid opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/15 blur-3xl dark:bg-primary/10" />
+          <div className="absolute top-1/3 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl dark:bg-accent/10" />
+          <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-primary/10 blur-3xl dark:bg-primary/5" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-14 items-end">
+          <div className="lg:col-span-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/15 border border-accent/30 text-accent rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              Inventory & Capabilities
+            </div>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-7 transition-smooth text-foreground tracking-tight leading-[0.92]">
+              Aerospace Materials
+              <span className="block text-primary">Built for Flight-Critical Performance</span>
+            </h1>
+            <p className="text-secondary max-w-3xl text-lg md:text-xl leading-relaxed">
+              Browse certified composites, structural assemblies, and precision-manufactured
+              components engineered to meet strict aerospace validation standards.
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/quote"
+                className="px-6 py-3 rounded-sm bg-primary text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary-accent transition-smooth"
+              >
+                Request Material Quote
+              </Link>
+              <Link
+                href="/workshops"
+                className="px-6 py-3 rounded-sm border border-border bg-card text-foreground text-xs font-bold uppercase tracking-[0.2em] hover:border-primary hover:text-primary transition-smooth"
+              >
+                Explore Training
+              </Link>
+            </div>
           </div>
-          <h1 className="text-6xl font-extrabold mb-8 transition-smooth text-foreground tracking-tight leading-[0.9]">
-            Materials &<br />Fabrication.
-          </h1>
-          <p className="text-secondary max-w-2xl text-xl leading-relaxed">
-            Sourcing and manufacturing high-integrity aerospace solutions based on rigid
-            engineering standards and certified composite methodologies.
-          </p>
+
+          <div className="lg:col-span-4">
+            <div className="bg-card/90 backdrop-blur-md border border-border rounded-sm p-6 shadow-xl shadow-primary/5">
+              <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-secondary mb-4">Trust Metrics</div>
+              <div className="space-y-4">
+                <div className="flex items-start justify-between gap-4 pb-4 border-b border-border">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-secondary">Compliance</div>
+                    <div className="text-sm font-semibold text-foreground mt-1">ASTM Reference Alignment</div>
+                  </div>
+                  <span className="text-primary text-xs font-bold">Verified</span>
+                </div>
+                <div className="flex items-start justify-between gap-4 pb-4 border-b border-border">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-secondary">Documentation</div>
+                    <div className="text-sm font-semibold text-foreground mt-1">Batch Traceability Records</div>
+                  </div>
+                  <span className="text-primary text-xs font-bold">Available</span>
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-secondary">Support</div>
+                    <div className="text-sm font-semibold text-foreground mt-1">Engineering Consult Included</div>
+                  </div>
+                  <span className="text-primary text-xs font-bold">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
