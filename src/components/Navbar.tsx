@@ -58,7 +58,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 group">
           <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center transition-smooth group-hover:scale-105">
-            <span className="text-white font-bold text-xl dark:text-slate-900">A</span>
+            <span className="text-white font-bold text-xl">A</span>
           </div>
           <div className="flex flex-col">
             <span className={`font-bold text-lg leading-none tracking-tight transition-smooth ${logoTextColor}`}>AEROKODEX</span>
@@ -89,7 +89,7 @@ const Navbar = () => {
                 <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">{user?.username?.[0]?.toUpperCase()}</span>
                 </div>
-                <span className="hidden lg:inline max-w-[120px] truncate">{user?.username}</span>
+                <span className="hidden lg:inline max-w-30 truncate">{user?.username}</span>
                 <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -133,7 +133,7 @@ const Navbar = () => {
                 className={`px-5 py-2 rounded-sm border font-semibold uppercase tracking-wider text-sm transition-smooth ${
                   showSurfaceNav
                     ? 'border-primary text-primary hover:bg-primary hover:text-white'
-                    : 'border-white/40 text-white hover:bg-white hover:text-slate-900'
+                    : 'border-white/40 text-white hover:bg-white hover:text-primary-accent'
                 }`}
               >
                 Contact

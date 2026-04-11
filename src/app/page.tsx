@@ -22,16 +22,16 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mt-12">
             {/* Junior Program */}
             <div className="group relative rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-              <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <div className="aspect-16/10 relative overflow-hidden bg-muted">
                 <Image
                   src="/CoverImage-AeroKodex-Junior1.webp"
                   alt="AeroKodex Junior Program"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-6 left-6">
-                  <span className="px-4 py-1.5 rounded-full bg-sky-500/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                  <span className="px-4 py-1.5 rounded-full program-chip-junior text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
                     Class 4 – 8
                   </span>
                 </div>
@@ -48,12 +48,12 @@ export default function Home() {
                     "Interactive STEM logic building",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start text-sm text-secondary">
-                      <svg className="w-5 h-5 text-sky-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      <svg className="w-5 h-5 program-check-junior mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <Link href="/workshops" className="mt-auto w-full py-4 text-center rounded-xl bg-sky-50 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400 font-bold hover:bg-sky-500 hover:text-white transition-colors">
+                <Link href="/workshops" className="mt-auto w-full py-4 text-center rounded-xl font-bold transition-colors program-cta-junior">
                   Explore Junior Workshops →
                 </Link>
               </div>
@@ -61,16 +61,16 @@ export default function Home() {
 
             {/* Senior Program */}
             <div className="group relative rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-              <div className="aspect-[16/10] relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <div className="aspect-16/10 relative overflow-hidden bg-muted">
                 <Image
                   src="/CoverImage-AeroKodex-Senior1.webp"
                   alt="AeroKodex Senior Program"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute top-6 left-6">
-                  <span className="px-4 py-1.5 rounded-full bg-indigo-600/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                  <span className="px-4 py-1.5 rounded-full program-chip-senior text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
                     Class 9 – 12
                   </span>
                 </div>
@@ -87,12 +87,12 @@ export default function Home() {
                     "Programming autonomous flight missions",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start text-sm text-secondary">
-                      <svg className="w-5 h-5 text-indigo-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      <svg className="w-5 h-5 program-check-senior mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <Link href="/workshops" className="mt-auto w-full py-4 text-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400 font-bold hover:bg-indigo-600 hover:text-white transition-colors">
+                <Link href="/workshops" className="mt-auto w-full py-4 text-center rounded-xl font-bold transition-colors program-cta-senior">
                   Explore Senior Workshops →
                 </Link>
               </div>
@@ -129,7 +129,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="flex-1 bg-card rounded-sm p-8 min-h-[300px] flex items-center justify-center border border-border">
+          <div className="flex-1 bg-card rounded-sm p-8 min-h-75 flex items-center justify-center border border-border">
             <div className="text-center">
               <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold block mb-2">Facility Spotlight</span>
               <div className="text-2xl font-bold text-primary">Kushinagar Research Hub</div>
@@ -164,7 +164,7 @@ export default function Home() {
                 Request a Quote
               </Link>
             </div>
-            <div className="rounded-[2rem] overflow-hidden border border-border shadow-sm bg-gradient-to-br from-accent/10 via-surface to-white dark:from-white/5 dark:via-slate-950/10 dark:to-slate-950/0">
+            <div className="rounded-4xl overflow-hidden border border-border shadow-sm bg-linear-to-br from-accent/10 via-surface to-background">
               <div className="p-12">
                 <div className="text-sm uppercase tracking-[0.3em] text-secondary font-bold mb-4">Fast Quote Support</div>
                 <div className="text-3xl font-extrabold text-foreground mb-6">AeroKodex Quote Desk</div>

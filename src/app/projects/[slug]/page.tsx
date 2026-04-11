@@ -35,7 +35,7 @@ const ProjectDetailsPage = ({ params }: Props) => {
         <div className="animate-pulse space-y-8">
            <div className="h-4 bg-muted w-32 rounded-sm" />
            <div className="h-16 bg-muted w-2/3 rounded-sm" />
-           <div className="aspect-[21/9] bg-muted rounded-sm" />
+           <div className="aspect-21/9 bg-muted rounded-sm" />
            <div className="h-40 bg-muted rounded-sm" />
         </div>
       </div>
@@ -66,7 +66,7 @@ const ProjectDetailsPage = ({ params }: Props) => {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero */}
-      <section className="relative py-24 pt-32 bg-surface dark:bg-slate-950">
+      <section className="relative py-24 pt-32 bg-surface">
         <div className="absolute inset-0 mesh-grid opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <nav className="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-secondary mb-8">
@@ -127,7 +127,7 @@ const ProjectDetailsPage = ({ params }: Props) => {
       {allImages.length > 0 && (
          <section className="py-20 border-y border-border bg-muted">
              <div className="max-w-7xl mx-auto px-6">
-                <div className="aspect-[21/9] bg-card border border-border rounded-sm overflow-hidden mb-6 shadow-xl">
+                <div className="aspect-21/9 bg-card border border-border rounded-sm overflow-hidden mb-6 shadow-xl">
                    <img src={displayImage?.image} className="w-full h-full object-cover" alt={displayImage?.caption || project.title} />
                 </div>
                 {allImages.length > 1 && (
@@ -176,7 +176,7 @@ const ProjectDetailsPage = ({ params }: Props) => {
           </section>
       )}
 
-      <section className="py-24 bg-surface dark:bg-slate-950 border-t border-border text-center">
+      <section className="py-24 bg-surface border-t border-border text-center">
          <div className="max-w-3xl mx-auto px-6">
             <h2 className="text-4xl font-extrabold mb-6 tracking-tight text-foreground">Have a similar requirement?</h2>
             <p className="text-lg text-secondary mb-10">Our engineering team is ready to analyze your technical specifications and provide a detailed fabrication proposal.</p>

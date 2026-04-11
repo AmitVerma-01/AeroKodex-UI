@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-background">
+    <section className="relative h-screen min-h-175 flex items-center overflow-hidden bg-background">
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/55 to-slate-900/20 dark:from-slate-950/90 dark:via-slate-900/60 dark:to-transparent z-10" />
+        <div className="absolute inset-0 hero-overlay z-10" />
         <img 
           src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop" 
           alt="Aerospace Components" 
@@ -22,7 +22,7 @@ const Hero = () => {
             <br/>
             <span className="text-accent">& Technical Excellence</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-200 dark:text-slate-300 mb-10 leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed font-light">
             AeroKodex Systems provides advanced composite fabrication, precision 
             engineering, and specialized solutions for the aerospace and defense sectors.
           </p>
@@ -35,7 +35,7 @@ const Hero = () => {
             </Link>
             <Link 
               href="/#quote" 
-              className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white backdrop-blur-sm border border-white/40 dark:bg-white/10 dark:hover:bg-white/20 dark:border-white/30 rounded-sm font-bold transition-smooth text-center"
+              className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white backdrop-blur-sm border border-white/40 rounded-sm font-bold transition-smooth text-center"
             >
               Get a Quote
             </Link>

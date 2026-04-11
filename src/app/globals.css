@@ -3,39 +3,69 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fafbfc;
-  --foreground: #0f172a;
-  --primary: #003366;
-  --primary-accent: #004b93;
-  --secondary: #475569;
-  --accent: #0284c7;
-  --muted: #f1f5f9;
-  --border: #e2e8f0;
-  --surface: #ffffff;
-  --surface-alt: #f8fafc;
-  --card: #ffffff;
-  --card-hover: #f8fafc;
-  --input: #f1f5f9;
-  --nav-bg: rgba(255, 255, 255, 0.85);
-  --nav-border: rgba(226, 232, 240, 0.5);
+  /* Saffron + Blue + White theme tokens (edit these to re-theme app-wide) */
+  --brand-saffron: #f28c28;
+  --brand-saffron-soft: #fff3e6;
+  --brand-blue: #0f4c81;
+  --brand-blue-strong: #0b3a63;
+  --brand-blue-soft: #eaf2fb;
+  --brand-white: #ffffff;
+
+  --background: #f8fbff;
+  --foreground: #0b2239;
+  --primary: var(--brand-blue);
+  --primary-accent: var(--brand-blue-strong);
+  --secondary: #3c5d7b;
+  --accent: var(--brand-saffron);
+  --muted: var(--brand-blue-soft);
+  --border: #cfe0f2;
+  --surface: var(--brand-white);
+  --surface-alt: #f1f7ff;
+  --card: var(--brand-white);
+  --card-hover: #f6faff;
+  --input: #edf5ff;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-border: rgba(15, 76, 129, 0.2);
+
+  --program-junior: var(--brand-saffron);
+  --program-junior-soft: var(--brand-saffron-soft);
+  --program-senior: var(--brand-blue);
+  --program-senior-soft: var(--brand-blue-soft);
+
+  --hero-overlay-start: rgba(9, 27, 45, 0.9);
+  --hero-overlay-mid: rgba(15, 76, 129, 0.55);
+  --hero-overlay-end: rgba(15, 76, 129, 0.2);
+
+  --shadow-color: 15, 76, 129;
 }
 
 .dark {
-  --background: #0a0f1a;
-  --foreground: #e8edf5;
-  --primary: #38bdf8;
-  --primary-accent: #0ea5e9;
-  --secondary: #94a3b8;
-  --accent: #38bdf8;
-  --muted: #111827;
-  --border: #1e293b;
-  --surface: #0f172a;
-  --surface-alt: #111827;
-  --card: #111827;
-  --card-hover: #1e293b;
-  --input: #1e293b;
-  --nav-bg: rgba(10, 15, 26, 0.85);
-  --nav-border: rgba(30, 41, 59, 0.5);
+  --background: #061321;
+  --foreground: #ebf3ff;
+  --primary: #79b5e8;
+  --primary-accent: #9ac7ef;
+  --secondary: #9eb6ce;
+  --accent: #ffae4a;
+  --muted: #0f2032;
+  --border: #1e3954;
+  --surface: #0b1c2e;
+  --surface-alt: #0a1828;
+  --card: #0e2237;
+  --card-hover: #11304d;
+  --input: #0f2a43;
+  --nav-bg: rgba(6, 19, 33, 0.88);
+  --nav-border: rgba(121, 181, 232, 0.25);
+
+  --program-junior: #ffbf6f;
+  --program-junior-soft: rgba(255, 191, 111, 0.14);
+  --program-senior: #79b5e8;
+  --program-senior-soft: rgba(121, 181, 232, 0.14);
+
+  --hero-overlay-start: rgba(4, 15, 26, 0.93);
+  --hero-overlay-mid: rgba(11, 58, 99, 0.62);
+  --hero-overlay-end: rgba(8, 38, 66, 0.26);
+
+  --shadow-color: 121, 181, 232;
 }
 
 @theme inline {
@@ -52,6 +82,14 @@
   --color-card: var(--card);
   --color-card-hover: var(--card-hover);
   --color-input: var(--input);
+  --color-brand-saffron: var(--brand-saffron);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-soft: var(--brand-blue-soft);
+  --color-brand-white: var(--brand-white);
+  --color-program-junior: var(--program-junior);
+  --color-program-junior-soft: var(--program-junior-soft);
+  --color-program-senior: var(--program-senior);
+  --color-program-senior-soft: var(--program-senior-soft);
   --font-sans: var(--font-geist-sans), 'Inter', system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
@@ -93,11 +131,7 @@ body {
 
 .hover-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px -12px rgba(0, 51, 102, 0.1);
-}
-
-.dark .hover-lift:hover {
-  box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.08);
+  box-shadow: 0 20px 40px -12px rgba(var(--shadow-color), 0.14);
 }
 
 /* ───── Typography ───── */
@@ -112,6 +146,51 @@ h1, h2, h3 {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    90deg,
+    var(--hero-overlay-start) 0%,
+    var(--hero-overlay-mid) 55%,
+    var(--hero-overlay-end) 100%
+  );
+}
+
+.program-chip-junior {
+  background: color-mix(in srgb, var(--program-junior) 88%, transparent);
+}
+
+.program-chip-senior {
+  background: color-mix(in srgb, var(--program-senior) 88%, transparent);
+}
+
+.program-check-junior {
+  color: var(--program-junior);
+}
+
+.program-check-senior {
+  color: var(--program-senior);
+}
+
+.program-cta-junior {
+  background: var(--program-junior-soft);
+  color: var(--program-junior);
+}
+
+.program-cta-junior:hover {
+  background: var(--program-junior);
+  color: var(--brand-white);
+}
+
+.program-cta-senior {
+  background: var(--program-senior-soft);
+  color: var(--program-senior);
+}
+
+.program-cta-senior:hover {
+  background: var(--program-senior);
+  color: var(--brand-white);
 }
 
 /* ───── Animations ───── */

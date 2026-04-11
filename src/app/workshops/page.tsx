@@ -15,9 +15,9 @@ const LEVELS: { key: Level; label: string; grades: string; tagline: string; cove
     grades: 'Class 4 – 8',
     tagline: 'Where curiosity meets aerospace science',
     cover: '/CoverImage-AeroKodex-Junior1.webp',
-    accentFrom: '#0ea5e9',
-    accentTo: '#6366f1',
-    badge: 'bg-sky-500',
+    accentFrom: 'var(--program-junior)',
+    accentTo: 'var(--accent)',
+    badge: 'bg-accent',
   },
   {
     key: 'senior',
@@ -25,9 +25,9 @@ const LEVELS: { key: Level; label: string; grades: string; tagline: string; cove
     grades: 'Class 9 – 12',
     tagline: 'Advanced engineering for tomorrow\'s innovators',
     cover: '/CoverImage-AeroKodex-Senior1.webp',
-    accentFrom: '#003366',
-    accentTo: '#0ea5e9',
-    badge: 'bg-indigo-600',
+    accentFrom: 'var(--program-senior)',
+    accentTo: 'var(--primary)',
+    badge: 'bg-primary',
   },
 ];
 
@@ -134,7 +134,7 @@ const WorkshopsPage = () => {
               style={{
                 background: `linear-gradient(135deg, ${levelInfo.accentFrom}33, ${levelInfo.accentTo}33)`,
                 border: `1px solid ${levelInfo.accentFrom}55`,
-                color: `#0ea5e9`,
+                color: `var(--accent)`,
               }}
             >
               {levelInfo.grades} Program
@@ -169,7 +169,7 @@ const WorkshopsPage = () => {
 
       {/* ─── Category filter bar ─── */}
       {categories.length > 0 && (
-        <div className="sticky top-[60px] z-30 border-b border-border bg-surface/80 backdrop-blur-lg">
+        <div className="sticky top-15 z-30 border-b border-border bg-surface/80 backdrop-blur-lg">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center gap-2">
             <span className="text-[10px] font-bold uppercase tracking-widest text-secondary mr-2">Filter:</span>
             <button
@@ -243,7 +243,7 @@ const WorkshopsPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden animate-pulse">
-                <div className="aspect-[16/10] bg-muted" />
+                <div className="aspect-16/10 bg-muted" />
                 <div className="p-7 space-y-4">
                   <div className="h-3 bg-muted rounded-full w-1/3" />
                   <div className="h-5 bg-muted rounded-full w-3/4" />
@@ -283,7 +283,7 @@ const WorkshopsPage = () => {
                 className="group bg-card border border-border rounded-2xl overflow-hidden hover-lift shadow-sm flex flex-col"
               >
                 {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                <div className="relative aspect-16/10 overflow-hidden bg-muted">
                   {workshop.image ? (
                     <img
                       src={workshop.image}
@@ -433,13 +433,13 @@ const WorkshopsPage = () => {
       </section>
 
       {/* ─── Custom Training CTA ─── */}
-      <section className="py-24 bg-slate-900 dark:bg-slate-950">
+      <section className="py-24 bg-primary-accent">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="text-accent font-bold uppercase tracking-[0.3em] text-xs mb-4 block">In-School Programs</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Bring AeroKodex to Your School
           </h2>
-          <p className="text-slate-400 mb-10 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/70 mb-10 text-lg max-w-2xl mx-auto leading-relaxed">
             We offer customized in-campus workshops and semester-long programs for schools across India.
             Tailored for both Junior (4–8) and Senior (9–12) students.
           </p>

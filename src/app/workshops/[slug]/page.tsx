@@ -121,7 +121,7 @@ const WorkshopDetailPage = ({ params }: Props) => {
   return (
     <div className="bg-background min-h-screen">
       {/* ─── Full-bleed Hero ─── */}
-      <section className="relative h-[65vh] min-h-[480px] flex flex-col justify-end overflow-hidden">
+      <section className="relative h-[65vh] min-h-120 flex flex-col justify-end overflow-hidden">
         <div className="absolute inset-0 z-0">
           {workshopImage ? (
             <Image
@@ -133,9 +133,9 @@ const WorkshopDetailPage = ({ params }: Props) => {
               sizes="100vw"
             />
           ) : (
-            <div className="w-full h-full bg-slate-900" />
+            <div className="w-full h-full bg-primary-accent" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-black/20" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-14 w-full">
@@ -145,7 +145,7 @@ const WorkshopDetailPage = ({ params }: Props) => {
               Workshops
             </Link>
             <span>/</span>
-            <span className="text-white/80 truncate max-w-[200px]">{workshop.title}</span>
+            <span className="text-white/80 truncate max-w-50">{workshop.title}</span>
           </nav>
 
           <div className="flex flex-wrap gap-3 mb-5">

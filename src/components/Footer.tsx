@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="space-y-6">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
-              <span className="text-white font-bold text-xl dark:text-slate-900">A</span>
+              <span className="text-white font-bold text-xl">A</span>
             </div>
             <span className="font-bold text-xl tracking-tight">AEROKODEX</span>
           </Link>
