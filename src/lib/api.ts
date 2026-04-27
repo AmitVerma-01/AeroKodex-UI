@@ -86,8 +86,10 @@ export interface Category {
 export interface ProductVariant {
   id: number;
   variant_name: string;
-  price?: string; // null for unauthenticated users
-  sku?: string;
+  specs: Record<string, string | number>; // per-variant specs e.g. { gsm: 100, width_mm: 1000, weave: 'Plain' }
+  datasheet_url?: string | null;
+  price?: string | null; // null for unauthenticated users
+  sku?: string | null;
   stock: number;
 }
 
