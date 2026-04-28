@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Capabilities from "@/components/Capabilities";
+import FeaturedWorkshops from "@/components/FeaturedWorkshops";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -102,6 +103,8 @@ export default function Home() {
       </section>
 
       <Capabilities />
+
+      <FeaturedWorkshops />
 
       {/* Innovation Section */}
       <section className="py-24 max-w-7xl mx-auto px-6">
